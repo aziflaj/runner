@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<title>Runner - login or register</title>
+
+	<link rel="stylesheet" href="static/css/style.css" />
+
+	<script>
+
+		window.location.assign("#");
+		screen.lockOrientation('portrait');
+	</script>
+
+</head>
+<body>
+
+<!-- Main login page -->
+<section id="index" data-position="current">
+	<section role="region">
+		<header class="fixed">
+			<h1>Please Login <em>or register</em></h1>
+		</header>
+		<article class="content scrollable header">
+
+			<form>
+				<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+					<input id="usernameLogin" type="text" placeholder="Username" required="required">
+					<input id="passwordLogin" type="password" placeholder="Password" required="required">
+					<button class="recommend custom-home-login-button" id="loginBtn">RUN</button>
+					<button class="danger custom-home-register-button" id="registerBtn">Register</button>
+				</div>
+			</form>
+
+		</article>
+	</section>
+</section> <!-- end login -->
+
+
+<!-- Main signup page  -->
+<section role="region" id="registerPage" data-position="right">
+	<header class="fixed">
+		<a id="registerPage-back" href="#"><span class="icon icon-back">back</span></a>
+		<h1>Please Register</h1>
+	</header>
+	<article class="content scrollable header">
+
+		<form>
+			<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+				<input id="usernameRegister" type="text" placeholder="Username" required="required"><br>
+				<input id="passwordRegister" type="password" placeholder="Password" required="required"><br>
+				<input id="passwordAgainRegister" type="password" placeholder="Your Pass Again" required="required"><br>
+				<input type="number" placeholder="Weight (Kg)" id="weightRegister" required="required"><br>
+				<button class="recommend custom-register-button" id="regBtn">Register</button>
+			</div>
+		</form>
+
+	</article>
+</section><!-- end regjistrimi -->
+
+<!-- Thanking the user after successfully registered -->
+<section role="region" id="thanksPage" data-position="right" class="hidden">
+	<article class="content scrollable header">
+
+		<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+			<h1>Thanks for your registration</h1><br>
+			<h2>Happy running :)</h2><br>
+			<button class="recommend" id="thanksRunButton" style="margin-top: 50px;display: none;">Run</button>
+		</div>
+
+	</article>
+</section>
+
+<!-- Choose the run mode  -->
+<section id="runPage" data-position="right">
+	<section data-type="sidebar">
+		<header>
+			<menu type="toolbar">
+				<a href="#">Done</a>
+			</menu>
+			<h1>Menu</h1>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="#" id="editProfile">Edit Profile</a></li>
+				<li><a href="#" id="logout">LogOut</a></li>
+			</ul>
+		</nav>
+	</section>
+	<section id="drawer" role="region">
+		<header class="fixed navBar">
+			<a class="run-navigation" href="#"><span id="hideSidebar" class="icon icon-menu">hide sidebar</span></a>
+			<a class="run-navigation" href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+			<menu style="display: none;"  type="toolbar" id="close">
+				<button><span class="icon icon-close" >close</span></button>
+			</menu>
+			<h1>Run <em>and keep your body in shape</em></h1>
+		</header>
+		<article class="content scrollable header">
+
+			<div class="small-11 medium-11 medium-centered small-centered columns">
+				<div id="spanDistanceCont" style="display: none;">
+					<input type="number" placeholder="Meters (m)">
+					<div id="distanceCont">
+						<h1 class="center">Distance Left: <em></em> m</h1>
+					</div>
+				</div>
+				<div id="spanTimeCont" style="display: none;">
+                    <div class="small-4 medium-4 large-4 columns"><input type="number" value="0" id="hours" min-val="0" placeholder="hours"></div>
+                    <div class="small-4 medium-4 large-4 columns"><input type="number" value="0" id="minutes" min-val="0" max-val="59" placeholder="minutes"></div>
+                    <div class="small-4 medium-4 large-4 columns"><input type="number" value="0" id="seconds" min-val="0" max-val="59" placeholder="seconds"></div>
+					<div id="timeCont">
+						<h1 class="center">Time Left: <span id="runPageHours"></span>H <span id="runPageMinutes"></span> M <em id="runPageSeconds"></em> S</h1>
+					</div>
+				</div>
+				<div id="freeCont">
+					<div class="freeContText"><h1>Press the button and <em>start running</em>.</h1></div>
+					<div class="center" style="font-size: 24px;">Distance: <em class="distance"></em> m <br> Time: <em class="hours"></em> H <em class="minutes"></em> M <em class="seconds"></em> S</div>
+				</div>
+			</div>
+
+			<div id="counter" class="small-11 medium-11 medium-centered small-centered columns" style="display: none;">
+				<div class="small-12 medium-12 large-12 columns">
+                    <div class="small-4 medium-4 large-4 columns" id="number3">3</div>
+                    <div class="small-4 medium-4 large-4 columns" id="number2">2</div>
+                    <div class="small-4 medium-4 large-4 columns" id="number1">1</div>
+                    <div class="clearfix"></div>
+				</div>
+				<div class="small-12 medium-12 large-12 columns" id="goText">GO</div>
+			</div>
+
+			<div id="selectRunCont">
+					<span id="spanRun">
+						<div>
+							<img src="static/images/running_icon_large.png" width="90px" height="90px" />
+						</div>
+					</span>
+					<span id="spanDistance" style="display: none;">
+						<div>
+							<img src="static/images/road_icon.png" width="90px" height="90px" />
+						</div>
+					</span>
+					<span id="spanTime" style="display: none;">
+						<div>
+							<img src="static/images/stopwatch_icon_2.png" width="90px" height="90px" />
+						</div>
+					</span>
+					<span id="spanFree" style="display: none;">
+						<div>
+							<img src="static/images/running_icon_large.png" width="90px" height="90px" />
+						</div>
+					</span>
+			</div>
+		</article>
+	</section> <!-- end drawer -->
+</section> <!-- end index -->
+
+
+<section role="region" id="viewResultsPage" data-position="right" class="hidden">
+	<article class="content scrollable header">
+
+		<div class="small-11 medium-11 medium-centered small-centered columns" style="text-align: center;">
+			<div><h2 id="resMeters">You have runned <em></em> meters.</h2></div>
+			<div><h2 id="resTime">You have runned <em id="spanHours"></em> H <em id="spanMinutes"></em> M <em id="spanSeconds"></em> S.</h2></div>
+			<div><h2 id="resCalories">You have burned <em> 69 </em> calories.</h2></div>
+            <div><h2 id="avarageSpeed">Your avarage speed is <em></em> m/s</h2></div>
+            <button class="recommend" style="margin-top: 150px;">Run Again</button>
+		</div>
+
+	</article>
+</section>
+
+<!-- Faqja ku mund te editosh te dhenat e profilit -->
+<section role="region" id="editProfilePage" data-position="right" class="hidden">
+	<header class="fixed">
+		<a id="editProfileCont-back" href="#"><span class="icon icon-back">back</span></a>
+		<h1>Edit your Profile</h1>
+	</header>
+
+	<article class="content scrollable header">
+		<form>
+
+			<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+				<input id="usernameEdit" type="text" placeholder="Username" required="required" readonly >
+			</div>
+            <div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+                <input id="passwordOld" type="password" placeholder="Your old password" required="required">
+            </div>
+			<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+				<input id="passwordEdit" type="password" placeholder="Your new password" required="required">
+			</div>
+			<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+				<input id="passwordAgainEdit" type="password" placeholder="Write it again" required="required">
+			</div>
+			<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+				<input type="number" placeholder="Weight (Kg)" id="weightEdit">
+			</div><br>
+			<div class="small-11 medium-11 medium-centered small-centered columns custom-register-container">
+				<button class="recommend custom-register-button" id="editBtn">Edits</button>
+			</div>
+		</form>
+	</article>
+</section>
+
+
+<script type="text/javascript" defer src="static/js/jquery.min.js"></script>
+<script type="text/javascript" defer src="static/js/jquery.animate-colors-min.js"></script>
+<script type="text/javascript" defer src="static/js/status.js"></script>
+<script type="text/javascript" defer src="static/js/seekbars.js"></script>
+<script type="text/javascript" defer src="static/js/main.js"></script>
+
+<script>
+
+window.onload = function(){
+
+/** ------------------------------------------ LOGIN PAGE ---------------------------------------------------------- **/
+
+	// Event listener for login
+	$("#loginBtn").on("click", function(){
+		login($("#usernameLogin").val(), $("#passwordLogin").val());
+	});
+
+	// Event listener for signing up
+	$("#registerBtn").on("click", clickRegisterBtn);
+
+
+/** ----------------------------------------- Register PAGE -------------------------------------------------------- **/
+
+	// Event listener for the back button
+	$("#registerPage-back").on("click", clickRegisterPageBack);
+
+	$("#regBtn").on("click", clickRegBtn);
+
+
+/** ------------------------------------------ THANKS PAGE --------------------------------------------------------- **/
+
+	// Event listener for thanksPage
+	$("#thanksRunButton").on("click", clickThanksRunButton);
+
+/** ------------------------------------------ THANKS PAGE --------------------------------------------------------- **/
+
+    // Event listener for editing
+    $("#editBtn").on("click", function(){
+        var returned = makeUpdate();                        // updates the database
+        if(returned !== null){                              
+            $("#runPage").removeClass("right");             
+            $("#editProfilePage").removeClass("current")
+                                 .addClass("hidden");
+        }
+    });
+
+    // Event listener for the back button
+    $("#editProfileCont-back").on("click", function(){
+        $("#runPage").removeClass("right");                                 
+        $("#editProfilePage").removeClass("current").addClass("hidden");    
+    });
+
+
+
+/** -------------------------------------------- RUN PAGE ---------------------------------------------------------- **/
+
+	// Event listener for the main button of runPage
+	$("#spanRun").on("click", function(){
+		if(displayed === "none"){                   
+		
+			if(clicked == 0 || clicked == null){
+				hideNavBar();
+				showButtons();
+				clicked = 1;
+			}else{
+				showNavBar();
+				hideButtons();
+				clicked = 0;
+			}
+
+		}else{
+
+			if(running == "Run"){               
+
+				$("#close").slideUp();          
+                $("#selectRunCont").hide();     
+
+                $(".freeContText").slideUp();           
+                $("#spanTimeCont input").hide();
+                $("#spanDistanceCont input").hide();
+                $("#runPage header").slideUp("fast");   
+
+                $("#counter").show();           
+
+                distance = 0;
+
+                counter.intervalContainer = setInterval(function(){
+                        if(counter.numberthree === false){
+                            $("#number3").show("slow");             
+                            counter.numberthree = true;
+                        }else if(counter.numbertwo === false){
+                            $("#number2").show(400);                
+                            counter.numbertwo = true;
+                        }else if(counter.numberone === false){
+                            $("#number1").show("fast");             
+                            counter.numberone = true;
+                        }else if(counter.gotext === false){
+                            $("#goText").show(100);                 
+                            counter.gotext = true;
+                        }else{
+
+                            startTime = new Date().getTime();	// get start time
+                            getLocation();						// get location
+
+                            timeInterval = setInterval(function(){timeLeft()}, 1000);
+
+                            distanceInterval = setInterval(function(){getLocation()}, 10000);
+
+
+                            redCircleInterval.interval = setInterval(function(){
+                                if(redCircleInterval.value === false){
+                                    $("#spanRun").animate({"backgroundColor": "red"}, "slow");
+                                    redCircleInterval.value = "red";
+                                }else if(redCircleInterval.value === "red"){
+                                    $("#spanRun").animate({"backgroundColor": "brown"}, "slow");
+                                    redCircleInterval.value = "brown";
+                                }else{
+                                    $("#spanRun").animate({"backgroundColor": "red"}, "slow");
+                                    redCircleInterval.value = "red";
+                                }
+                            }, 2000);
+
+                            runButtonClicked = 1;
+
+                            if(displayed == "Time"){
+
+                                if($("#hours").val() == ''){
+                                    console.log("The hours value is undefined");
+                                    timeSelected.hours = 0;
+                                }else{
+                                    timeSelected.hours = parseInt($("#hours").val());
+                                }
+
+                                if($("#minutes").val() == ''){
+                                    console.log("The minutes value is undefined");
+                                    timeSelected.minutes = 0;
+                                }else{
+                                    timeSelected.minutes = parseInt($("#minutes").val());
+                                }
+
+                                if($("#seconds").val() == ''){
+                                    console.log("The seconds field is undefined");
+                                    timeSelected.seconds = 0;
+                                }else{
+                                    timeSelected.seconds = parseInt($("#seconds").val());
+                                }
+
+                                timeSelected.totalSeconds = (timeSelected.seconds) + (timeSelected.minutes * 60) + (timeSelected.hours * 3600);
+                                console.log("Total Seconds: " + timeSelected.totalSeconds);
+
+                                $("#spanTimeCont").show();
+                                $("#timeCont").slideDown("fast");
+                                $("#spanTimeCont input").val("");
+
+                            }
+
+                            if(displayed == "Distance"){
+                                $("#spanDistanceCont").show();
+                                distanceSelected = $("#spanDistanceCont input").val();
+                                $("#spanDistanceCont input").val("");
+                                $("#distanceCont").slideDown("fast").find("em").html(distanceSelected);
+
+                                console.log("The distance selected to run: " + distanceSelected);
+                            }
+
+                            if(displayed == "Free"){ $("#freeCont .center").slideDown("slow"); }
+
+                            running = "Stop";
+
+                            counter.numberone = false;
+                            counter.numbertwo = false;
+                            counter.numberthree = false;
+                            counter.gotext = false;
+
+                            $("#number1").hide();
+                            $("#number2").hide();
+                            $("#number3").hide();
+                            $("#goText").hide();
+                            $("#selectRunCont").show();
+                            $("#spanRun").animate({"backgroundColor": "red"}, "slow");
+                            redCircleInterval.value = "red";
+                            $("#runPage header").slideDown("fast");
+
+                            clearInterval(counter.intervalContainer);
+                        }
+                    }, 1000);
+
+			}else if(running == "Stop"){
+				endTime = new Date().getTime();					
+				runTime = (endTime - startTime)/ 1000;			// calculate the run time
+
+				window.navigator.vibrate(1500);
+
+				clearInterval(timeInterval);					// stop updating
+				clearInterval(distanceInterval);
+                clearInterval(redCircleInterval.interval);
+                redCircleInterval.value = false;
+
+				getLocation();
+
+				$("#close").trigger("click");
+
+				console.log("\n\n Stopping the geolocation \n\n");
+
+                cal = calsBurned(distance);
+
+				showResultsFromRun();
+                $("#spanRun div img").prop("src", "static/images/running_icon_large.png");
+				displayed = "none";
+				runButtonClicked = 0;
+				running = "none";
+			}
+		}
+		
+	});
+
+	/**
+	 * Event handler for run buttons
+	 */
+	$("#spanTime").on("click", function(){
+		clickButton("Time");
+	});
+	$("#spanDistance").on("click", function(){
+		clickButton("Distance");
+	});
+	$("#spanFree").on("click", function(){
+		clickButton("Free");
+	});
+
+	/**
+	 * Event handler for the x button. 
+	 */
+	$("#close").on("click", function(){
+
+        $("#selectRunCont").show();                     
+		$("#close").hide();                             
+
+		if(displayed == "Distance"){                    
+			$("#spanDistanceCont input").val("");       
+			$("#spanDistanceCont").hide();
+			$("#distanceCont em").html("");
+			$("#distanceCont").hide();
+		}else if(displayed == "Time"){                  
+			$("#spanTimeCont input").val("");
+			$("#spanTimeCont").hide();
+			$("#timeCont em").html("");
+			$("#timeCont").hide();
+		}else if(displayed == "Free"){                  
+			$("#freeCont .center").hide();
+			$("#freeCont .freeContText").hide();
+			$("#freeCont").hide();
+		}
+		
+		$('.run-navigation').show();                    
+
+		clicked = 0;            
+		displayed = 'none';     
+
+		$("#spanRun div img")                           
+                .prop("src", "static/images/running_icon_large.png"); 
+		hideButtons();                                  
+		showNavBar();                                   
+
+	});
+
+    
+	$("#logout").on("click", function(){
+		//log the user out
+		$("#runPage").removeClass("current").addClass("right");     
+		$("#index").removeClass("left").addClass("current");        
+		USER.username = null;                                       
+		USER.weight = null;
+        USER.password = null;
+
+        $("#usernameLogin").val("");
+        $("#passwordLogin").val("");
+	});
+
+    // Event listener for editing profile
+	$("#editProfile").on("click", function(){
+
+		$("#usernameEdit").val(USER.username);              
+		$("#weightEdit").val(USER.weight);
+        $("#passwordEdit").val('');
+        $("#passwordAgainEdit").val('');
+
+		$("#runPage").addClass("right");                                    
+		$("#editProfilePage").removeClass("hidden").addClass("current");    
+
+	});
+
+}
+
+</script>
+
+</body>
+</html>

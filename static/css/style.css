@@ -1,0 +1,144 @@
+@import url("foundation.min.css");
+@import url("style/action_menu.css");
+@import url("style/buttons.css");
+@import url("style/confirm.css");
+@import url("style/edit_mode.css");
+@import url("style/headers.css");
+@import url("style/input_areas.css");
+@import url("style/status.css");
+@import url("style/switches.css");
+@import url("style/drawer.css");
+@import url("style/lists.css");
+@import url("style/progress_activity.css");
+@import url("style/scrolling.css");
+@import url("style/seekbars.css");
+@import url("style/tabs.css");
+@import url("style/toolbars.css");
+@import url("icons/action_icons.css");
+@import url("icons/media_icons.css");
+@import url("icons/comms_icons.css");
+@import url("icons/settings_icons.css");
+@import url("util.css");
+@import url("transitions.css");
+@import url("fonts.css");
+@import url("iDontKnowWhy.css");
+
+
+
+section[role="region"] > header:first-child {
+    background-color: #F6921C;
+}
+
+
+#index, #runPage {
+    height: 100%;
+}
+
+.custom-register-container{
+    margin-top: 10px;
+}
+
+.custom-register-container:first-child,
+.custom-register-button,
+.custom-home-login-button{
+    margin-top: 25px;
+}
+
+
+.custom-home-register-button{
+    margin-top: 75px;
+}
+
+#selectRunCont{
+    position: relative;
+    width:150px;
+    height: 150px;
+    margin: 120px auto;
+}
+
+#selectRunCont span{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 0;
+    left: 0;
+    background-color: #EEEF8C;
+    border-radius: 999px;
+}
+
+#selectRunCont span div{
+    width: 130px;
+    height: 130px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #F6921C;
+    border-radius: 999px;
+}
+
+#selectRunCont span div img{
+    margin-top: 18px;
+    margin-left: 18px;
+}
+
+#spanRun{
+    z-index: 100;
+    
+}
+
+#runBtn span{
+    display: inherit;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 30px;
+    padding-top: 35px;
+    text-align: center;
+    background-color: red;
+    border-radius: 999px;
+}
+
+#distanceCont,
+#timeCont,
+#freeCont,
+#stopButtonCont,
+#setTimeCountDown
+{
+    display: none;
+}
+
+#spanDistanceCont,
+#spanTimeCont{
+    margin-top: 50px;
+}
+
+#runButton{
+    margin-top: 200px;
+}
+
+#freeCont{
+    margin-top: 30px;
+    text-align: center;
+}
+
+#freeCont .center{
+    display: none;
+}
+
+#number1,
+#number2,
+#number3,
+#goText{
+    display: none;
+    text-align: center;
+}
+
+#goText{
+    margin-top: 100px;
+    font-size: 36px;
+    text-shadow: 1px 1px 1px brown;
+}
+
+#counter{
+    font-size: 26px;
+    font-weight: bold;
+}

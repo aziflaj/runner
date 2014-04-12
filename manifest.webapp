@@ -1,0 +1,26 @@
+{
+  "name": "Runner",
+  "description": "Run and keep your body in shape.",
+  "launch_path": "/home.html",
+  "permissions": { 
+		"geolocation": { 
+			"description": "Used to calculate the distance of run" 
+		},
+		"storage": {
+			"description": "Used to store user data like username, password and weight"
+		}
+    },
+
+  "icons": {
+    "60": "/static/images/app_icon_60.png",
+    "128": "/static/images/app_icon_128.png"
+    
+  },
+  "version": "0.8",
+  "developer": { 
+    "name": "Aldo Ziflaj & Aleksander Koko",
+    "url": "http://openlabs.cc/"
+  },
+  "default_locale": "en",
+  "orientation": "portrait-primary"
+}
