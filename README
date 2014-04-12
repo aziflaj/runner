@@ -1,0 +1,3 @@
+This is an application programmed for smartphones running Firefox OS.
+
+Its purpose in life is to make you run and keep your body in shape. You can choose if you want to run a specified distance, a specified time, or run as far as you can (the "free mode"). It uses geolocation in order to calculate the distance you run, and an algorithm to calculate the calories you burn in a run, based on the distance run and your weight (we know we shouldn't ask girls for their weight, but this application may be rude sometimes). 
